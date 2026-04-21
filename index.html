@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Islam — Cultura Teológica | Luis Felipe Fuentes</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0b1a2e;
+    --deep: #0e2240;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-pale: #f5e7bb;
+    --teal: #1e6e6e;
+    --teal-light: #2d9b9b;
+    --cream: #f9f3e8;
+    --text: #e8dfc8;
+    --white: #ffffff;
+    --muted: #8ea3bd;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: 'Lato', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── Geometric SVG background ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(201,168,76,0.07) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(30,110,110,0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── Geometric pattern overlay ── */
+  .geo-bg {
+    position: fixed;
+    inset: 0;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23c9a84c' stroke-width='0.5'%3E%3Cpolygon points='40,4 76,22 76,58 40,76 4,58 4,22'/%3E%3Cpolygon points='40,14 66,28 66,52 40,66 14,52 14,28'/%3E%3Cpolygon points='40,24 56,34 56,46 40,56 24,46 24,34'/%3E%3Cline x1='40' y1='4' x2='40' y2='24'/%3E%3Cline x1='76' y1='22' x2='56' y2='34'/%3E%3Cline x1='76' y1='58' x2='56' y2='46'/%3E%3Cline x1='40' y1='76' x2='40' y2='56'/%3E%3Cline x1='4' y1='58' x2='24' y2='46'/%3E%3Cline x1='4' y1='22' x2='24' y2='34'/%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 60px 20px 50px;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .arabic-ornament {
+    font-size: 2.8rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    opacity: 0.9;
+    margin-bottom: 12px;
+    display: block;
+    animation: fadeDown 1s ease forwards;
+  }
+
+  header h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.8rem, 4vw, 3.2rem);
+    color: var(--gold-light);
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+    animation: fadeDown 1s ease 0.2s both;
+  }
+
+  header h1 span {
+    display: block;
+    font-size: 0.5em;
+    color: var(--gold);
+    font-weight: 400;
+    margin-top: 8px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .meta-bar {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+    animation: fadeDown 1s ease 0.4s both;
+  }
+
+  .meta-item {
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .meta-item strong { color: var(--gold); font-weight: 700; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 30px auto;
+    max-width: 400px;
+  }
+  .divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+  .divider-gem {
+    width: 10px; height: 10px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  /* ── INDEX / NAV ── */
+  .index-section {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 24px 60px;
+  }
+
+  .section-label {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 36px;
+    opacity: 0.8;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: rgba(14, 34, 64, 0.75);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 4px;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    animation: fadeUp 0.7s ease both;
+  }
+
+  .card:nth-child(1) { animation-delay: 0.1s; }
+  .card:nth-child(2) { animation-delay: 0.2s; }
+  .card:nth-child(3) { animation-delay: 0.3s; }
+  .card:nth-child(4) { animation-delay: 0.4s; }
+  .card:nth-child(5) { animation-delay: 0.5s; }
+  .card:nth-child(6) { animation-delay: 0.6s; }
+  .card:nth-child(7) { animation-delay: 0.7s; }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--gold), var(--teal));
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+    transform-origin: left;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(201,168,76,0.08);
+    border-color: rgba(201,168,76,0.5);
+  }
+  .card:hover::before { transform: scaleX(1); }
+
+  .card-header {
+    padding: 28px 36px 22px;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .card-number {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.6rem;
+    color: var(--gold);
+    opacity: 0.35;
+    line-height: 1;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .card-title-area { flex: 1; }
+
+  .card-icon {
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--gold-light);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .card-subtitle {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-top: 4px;
+  }
+
+  .card-body {
+    padding: 0 36px 32px;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .card.open .card-body {
+    max-height: none;
+    padding: 20px 36px 32px;
+  }
+
+  .card-body p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: #b8cce0;
+    margin-bottom: 14px;
+    max-width: 900px;
+  }
+
+  .card-body ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    gap: 0 32px;
+  }
+
+  .card-body ul li {
+    font-size: 0.85rem;
+    color: #b8cce0;
+    padding: 6px 0 6px 20px;
+    position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    line-height: 1.6;
+  }
+
+  .card-body ul li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.5rem;
+    top: 11px;
+  }
+
+  .card-body ul li strong {
+    color: var(--gold-pale);
+    font-weight: 700;
+  }
+
+  .toggle-btn { display: none; }
+
+  .persons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 14px;
+  }
+  .person-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,76,0.12);
+    border-radius: 3px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .person-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    color: var(--gold-pale);
+    margin-bottom: 4px;
+  }
+  .person-dates {
+    font-size: 0.7rem;
+    color: var(--teal-light);
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+  .person-desc {
+    font-size: 0.8rem;
+    color: #a0b8d0;
+    line-height: 1.6;
+  }
+
+  /* ── TAG BADGES ── */
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .tag {
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    border-radius: 2px;
+  }
+
+  /* ── PILLAR GRID ── */
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin: 14px 0;
+  }
+  .pillar-item {
+    text-align: center;
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 10px 4px;
+    border-radius: 3px;
+  }
+  .pillar-emoji { font-size: 1.3rem; display: block; margin-bottom: 4px; }
+  .pillar-name { font-size: 0.62rem; color: var(--gold-pale); letter-spacing: 0.05em; }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 1px solid rgba(201,168,76,0.12);
+  }
+  footer p {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  footer strong { color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .cards-grid { grid-template-columns: 1fr; }
+    .card-body ul { grid-template-columns: 1fr; }
+    .pillar-grid { grid-template-columns: repeat(3, 1fr); }
+    .meta-bar { gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="geo-bg"></div>
+
+<!-- ══════════════ HEADER ══════════════ -->
+<header>
+  <span class="arabic-ornament">☽ ✦ بِسْمِ اللَّهِ ✦ ☽</span>
+  <h1>
+    El Islam
+    <span>Cultura Teológica · Presentación Completa</span>
+  </h1>
+  <div class="meta-bar">
+    <div class="meta-item">Estudiante: <strong>Luis Felipe Fuentes</strong></div>
+    <div class="meta-item">Materia: <strong>Cultura Teológica</strong></div>
+    <div class="meta-item">Fecha: <strong>21/04/2026</strong></div>
+  </div>
+</header>
+
+<!-- ══════════════ INDEX ══════════════ -->
+<main class="index-section">
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-gem"></div>
+    <div class="divider-line"></div>
+  </div>
+
+  <p class="section-label">Índice Interactivo — Haz clic en cada sección para expandir</p>
+
+  <div class="cards-grid">
+
+    <!-- ── 1. ¿QUÉ ES EL ISLAM? ── -->
+    <div class="card" id="card-1">
+      <div class="card-header">
+        <div class="card-number">01</div>
+        <div class="card-title-area">
+          <span class="card-icon">🌙</span>
+          <div class="card-title">¿Qué es el Islam?</div>
+          <div class="card-subtitle">Definición e identidad</div>
+        </div>
+      </div>
+      <button class="toggle-btn" onclick="toggleCard('card-1')">
+        <span class="toggle-icon">+</span> Ver contenido
+      </button>
+      <div class="card-body">
+        <p>El Islam es una de las tres grandes religiones monoteístas del mundo, junto al judaísmo y el cristianismo. Su nombre proviene del árabe <em>islām</em>, que significa «sumisión» o «entrega» a la voluntad de Allah (Dios). Sus seguidores, los musulmanes, representan hoy más de 1.900 millones de personas en todo el mundo, siendo la segunda religión más practicada.</p>
+        <p>El Islam se fundamenta en la creencia de que Allah es el único Dios y que Mahoma fue su último y más importante profeta. Sus enseñanzas están contenidas en el Corán, considerado la palabra literal de Dios, y en la Sunna, que recoge los dichos y actos del profeta. Estas dos fuentes constituyen la base de toda la vida espiritual, legal y moral del islam.</p>
+        <div class="tags">
+          <span class="tag">Monoteísmo</span>
+          <span class="tag">Árabe: Islām</span>
+          <span class="tag">1.900M seguidores</span>
+          <span class="tag">Profeta Mahoma</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 2. HISTORIA ── -->
+    <div class="card" id="card-2">
+      <div class="card-header">
+        <div class="card-number">02</div>
+        <div class="card-title-area">
+          <span class="card-icon">📜</span>
+          <div class="card-title">Historia del Islam</div>
+          <div class="card-subtitle">Origen, expansión y califatos</div>
+        </div>
+      </div>
+      <button class="toggle-btn" onclick="toggleCard('card-2')">
+        <span class="toggle-icon">+</span> Ver contenido
+      </button>
+      <div class="card-body">
+        <p>El Islam nació en el siglo VII d.C. en la Península Arábiga. En el año 610, Mahoma recibió las primeras revelaciones divinas en la cueva de Hira, cerca de La Meca. Inicialmente perseguido, emigró a Medina en el 622 d.C. en un evento llamado la <em>Hégira</em>, que marca el inicio del calendario islámico. En 630, Mahoma reconquistó La Meca y unificó Arabia bajo el islam.</p>
+        <ul>
+          <li><strong>Califato Rashidun (632–661):</strong> Los cuatro califas «bien guiados» expandieron el islam hacia Persia, Siria y Egipto tras la muerte del profeta.</li>
+          <li><strong>Califato Omeya (661–750):</strong> Expansión hacia España (Al-Ándalus), Asia Central e India; creación de un vasto Imperio Árabe.</li>
+          <li><strong>Califato Abasí (750–1258):</strong> Edad de Oro islámica con florecimiento de ciencias, filosofía, medicina y matemáticas en Bagdad.</li>
+          <li><strong>Imperio Otomano (1299–1922):</strong> Última gran potencia islámica que gobernó durante 6 siglos sobre tres continentes hasta su disolución tras la I Guerra Mundial.</li>
+          <li><strong>Siglo XX–XXI:</strong> Descolonización, surgimiento de estados islámicos y tensiones entre modernidad y tradición.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── 3. REGIONES ── -->
+    <div class="card" id="card-3">
+      <div class="card-header">
+        <div class="card-number">03</div>
+        <div class="card-title-area">
+          <span class="card-icon">🌍</span>
+          <div class="card-title">Distribución Geográfica</div>
+          <div class="card-subtitle">El mundo musulmán hoy</div>
+        </div>
+      </div>
+      <button class="toggle-btn" onclick="toggleCard('card-3')">
+        <span class="toggle-icon">+</span> Ver contenido
+      </button>
+      <div class="card-body">
+        <p>Contrario al imaginario popular, la mayor concentración de musulmanes no se encuentra en el Oriente Medio, sino en Asia. Indonesia es el país con más musulmanes del mundo (230 millones), seguida de Pakistán, Bangladesh e India. El mundo islámico se extiende desde Marruecos hasta las Filipinas, abarcando más de 50 países donde el islam es la religión mayoritaria.</p>
+        <ul>
+          <li><strong>Asia del Sur:</strong> Pakistan, Bangladesh e India concentran más del 30% de todos los musulmanes del mundo.</li>
+          <li><strong>Oriente Medio y Norte de África (MENA):</strong> Cuna del islam; incluye países como Arabia Saudí, Irán, Irak, Egipto y Turquía.</li>
+          <li><strong>África Subsahariana:</strong> Crecimiento acelerado; Nigeria, Etiopía y Senegal tienen grandes poblaciones musulmanas.</li>
+          <li><strong>Europa:</strong> Francia, Alemania y el Reino Unido tienen entre 4 y 6 millones de musulmanes cada uno, producto de migraciones.</li>
+          <li><strong>América Latina:</strong> Comunidades importantes en Brasil, Argentina y Colombia, muchas de origen sirio y libanés.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── 4. PERSONAJES ── -->
+    <div class="card" id="card-4">
+      <div class="card-header">
+        <div class="card-number">04</div>
+        <div class="card-title-area">
+          <span class="card-icon">⭐</span>
+          <div class="card-title">Personajes Destacados</div>
+          <div class="card-subtitle">Figuras históricas y sus legados</div>
+        </div>
+      </div>
+      <button class="toggle-btn" onclick="toggleCard('card-4')">
+        <span class="toggle-icon">+</span> Ver contenido
+      </button>
+      <div class="card-body">
+
+      <div class="persons-grid">
+        <div class="person-card">
+          <div class="person-name">Mahoma (Muhammad)</div>
+          <div class="person-dates">570 – 632 d.C. · La Meca, Arabia</div>
+          <div class="person-desc">Fundador del Islam y considerado el Sello de los Profetas. Recibió el Corán a través del ángel Yibril. Unificó las tribus árabes bajo un solo credo y sentó las bases de una civilización que transformó el mundo.</div>
+        </div>
+
+        <div class="person-card">
+          <div class="person-name">Ibn Sina (Avicena)</div>
+          <div class="person-dates">980 – 1037 d.C. · Persia</div>
+          <div class="person-desc">Filósofo y médico considerado el «Príncipe de los Médicos». Su obra <em>El Canon de la Medicina</em> fue texto universitario en Europa hasta el siglo XVII. También destacó en lógica, astronomía y psicología.</div>
+        </div>
+
+        <div class="person-card">
+          <div class="person-name">Al-Juarismi (Al-Khwarizmi)</div>
+          <div class="person-dates">780 – 850 d.C. · Bagdad</div>
+          <div class="person-desc">Matemático y astrónomo fundador del álgebra. Su obra <em>Kitāb al-mukhtaṣar fī ḥisāb al-jabr</em> dio origen a la palabra «álgebra». Su nombre latinizado «algorismus» originó la palabra «algoritmo».</div>
+        </div>
+
+        <div class="person-card">
+          <div class="person-name">Ibn Rushd (Averroes)</div>
+          <div class="person-dates">1126 – 1198 d.C. · Córdoba, Al-Ándalus</div>
+          <div class="person-desc">Filósofo, jurista y médico que comentó exhaustivamente a Aristóteles, transmitiendo la filosofía griega a Europa medieval. Su influencia en el pensamiento occidental fue tan profunda que se le llama «El Comentarista».</div>
+        </div>
+
+        <div class="person-card">
+          <div class="person-name">Ibn Battuta</div>
+          <div class="person-dates">1304 – 1368 d.C. · Marruecos</div>
+          <div class="person-desc">El mayor viajero de la historia antes de la modernidad. Recorrió más de 120,000 km en 30 años, visitando el norte de África, Oriente Medio, Asia Central, India y China. Su relato <em>Rihla</em> es fuente histórica invaluable.</div>
+        </div>
+
+        <div class="person-card">
+          <div class="person-name">Saladino (Salah ad-Din)</div>
+          <div class="person-dates">1137 – 1193 d.C. · Siria/Egipto</div>
+          <div class="person-desc">Sultán fundador de la dinastía Ayubí. Reconquistó Jerusalén de los cruzados en 1187 con una tolerancia inédita para la época. Reconocido tanto en el mundo islámico como en Europa por su caballerosidad y justicia.</div>
+        </div>
+      </div>
+
+      </div>
+    </div>
+
+    <!-- ── 5. FUNDAMENTOS ── -->
+    <div class="card" id="card-5">
+      <div class="card-header">
+        <div class="card-number">05</div>
+        <div class="card-title-area">
+          <span class="card-icon">📖</span>
+          <div class="card-title">Bases y Fundamentos</div>
+          <div class="card-subtitle">Los cinco pilares del Islam</div>
+        </div>
+      </div>
+      <button class="toggle-btn" onclick="toggleCard('card-5')">
+        <span class="toggle-icon">+</span> Ver contenido
+      </button>
+      <div class="card-body">
+        <p>El Islam se asienta sobre fuentes sagradas y actos de culto obligatorios. Las fuentes primarias son el <strong>Corán</strong> (palabra directa de Allah, revelada a Mahoma), la <strong>Sunna</strong> (tradición del profeta) y los <strong>Hadices</strong> (recopilaciones de sus dichos). La ley islámica o <strong>Sharia</strong> regula todos los aspectos de la vida, derivándose de estas fuentes.</p>
+
+        <div class="pillar-grid">
+          <div class="pillar-item">
+            <span class="pillar-emoji">🗣️</span>
+            <div class="pillar-name">Shahada</div>
+          </div>
+          <div class="pillar-item">
+            <span class="pillar-emoji">🙏</span>
+            <div class="pillar-name">Salat</div>
+          </div>
+          <div class="pillar-item">
+            <span class="pillar-emoji">💰</span>
+            <div class="pillar-name">Zakat</div>
+          </div>
+          <div class="pillar-item">
+            <span class="pillar-emoji">🌙</span>
+            <div class="pillar-name">Sawm</div>
+          </div>
+          <div class="pillar-item">
+            <span class="pillar-emoji">🕋</span>
+            <div class="pillar-name">Hajj</div>
+          </div>
+        </div>
+
+        <ul>
+          <li><strong>Shahada (Testimonio de Fe):</strong> «No hay más dios que Allah y Mahoma es su profeta». Es la profesión de fe que convierte a alguien en musulmán y el fundamento de toda la identidad islámica.</li>
+          <li><strong>Salat (Oración):</strong> Cinco oraciones diarias obligatorias al amanecer, mediodía, tarde, puesta de sol y noche, orientadas hacia La Meca. Son el lazo constante entre el creyente y su creador.</li>
+          <li><strong>Zakat (Limosna):</strong> Donación obligatoria del 2.5% de los ahorros anuales a los pobres. Purifica la riqueza y fomenta la solidaridad social como deber religioso.</li>
+          <li><strong>Sawm (Ayuno del Ramadán):</strong> Abstención de comida, bebida y relaciones íntimas desde el amanecer hasta el atardecer durante el mes de Ramadán. Es un ejercicio de autodisciplina y espiritualidad.</li>
+          <li><strong>Hajj (Peregrinación):</strong> Viaje a La Meca obligatorio al menos una vez en la vida para quienes tengan salud y medios económicos. Reúne a millones de musulmanes de todo el mundo en igualdad ante Dios.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── 6. REGLAS Y NORMAS ── -->
+    <div class="card" id="card-6">
+      <div class="card-header">
+        <div class="card-number">06</div>
+        <div class="card-title-area">
+          <span class="card-icon">⚖️</span>
+          <div class="card-title">Reglas y Normas</div>
+          <div class="card-subtitle">Halal, Haram y la Sharia</div>
+        </div>
+      </div>
+      <button class="toggle-btn" onclick="toggleCard('card-6')">
+        <span class="toggle-icon">+</span> Ver contenido
+      </button>
+      <div class="card-body">
+        <p>El Islam regula profundamente la vida cotidiana a través de su ley islámica, la <strong>Sharia</strong>. Esta no solo abarca rituales religiosos, sino también alimentación, finanzas, matrimonio, comercio y relaciones sociales. Todo acto se clasifica en <em>halal</em> (permitido) o <em>haram</em> (prohibido), con categorías intermedias de recomendado, neutral o desaconsejado.</p>
+        <ul>
+          <li><strong>Alimentación Halal:</strong> Está prohibida la carne de cerdo, la sangre, los animales carroñeros y el alcohol. Los animales deben sacrificarse en nombre de Allah con un método específico (dhabiha). Hoy existe una industria halal global de billones de dólares.</li>
+          <li><strong>Prohibición del Riba (usura):</strong> El cobro de intereses está prohibido; existen bancos islámicos que operan bajo principios de reparto de ganancias y riesgos en lugar de interés.</li>
+          <li><strong>Vestimenta y Modestia:</strong> El concepto de <em>hiyab</em> aplica a ambos géneros aunque de forma diferente. Las mujeres deben cubrir el cabello y el cuerpo; los hombres deben cubrirse del ombligo a las rodillas.</li>
+          <li><strong>Matrimonio y Familia:</strong> El Islam permite hasta cuatro esposas bajo condiciones estrictas de equidad. El matrimonio es un contrato civil-religioso. El divorcio existe pero se desaconseja. La familia es considerada la unidad base de la sociedad.</li>
+          <li><strong>Las Grandes Prohibiciones:</strong> Se prohíben el adulterio, el robo, el homicidio, la mentira y la idolatría. La <em>Sharia</em> establece castigos específicos (hudud) para ciertos crímenes, aunque su aplicación varía enormemente entre países.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── 7. SITUACIÓN ACTUAL ── -->
+    <div class="card" id="card-7">
+      <div class="card-header">
+        <div class="card-number">07</div>
+        <div class="card-title-area">
+          <span class="card-icon">🌐</span>
+          <div class="card-title">Islam y Política Actual</div>
+          <div class="card-subtitle">Geopolítica, tensiones y renacimiento</div>
+        </div>
+      </div>
+      <button class="toggle-btn" onclick="toggleCard('card-7')">
+        <span class="toggle-icon">+</span> Ver contenido
+      </button>
+      <div class="card-body">
+        <p>El Islam es hoy una fuerza política y cultural de primer orden mundial. La relación entre religión y Estado varía enormemente: desde teocracias como Irán (República Islámica) o Arabia Saudí, hasta democracias seculares con mayoría musulmana como Turquía, Senegal o Indonesia. El debate entre islamismo político y secularismo es uno de los más intensos del mundo contemporáneo.</p>
+        <ul>
+          <li><strong>Sunismo vs. Chiismo:</strong> La división principal del islam data del siglo VII. Los sunitas (~85%) y chiitas (~15%) difieren en la sucesión legítima del profeta. Esta brecha alimenta rivalidades regionales, especialmente entre Arabia Saudí (sunita) e Irán (chiita).</li>
+          <li><strong>Islamismo político:</strong> Movimientos como los Hermanos Musulmanes buscan estados gobernados por la Sharia. La Primavera Árabe (2011) evidenció la tensión entre partidos islamistas y gobiernos seculares, con resultados opuestos en Túnez, Egipto y Siria.</li>
+          <li><strong>Terrorismo y el Islam:</strong> Grupos como Al-Qaeda, ISIS y Boko Haram usan una interpretación radical y minoritaria del islam para justificar la violencia. La gran mayoría de líderes islámicos y estudiosos condenan estas acciones como contrarias al verdadero mensaje del Corán.</li>
+          <li><strong>Islam en Occidente:</strong> Más de 25 millones de musulmanes viven en Europa. El debate sobre integración, el uso del velo en espacios públicos y la libertad religiosa genera tensiones políticas en Francia, Alemania y otros países.</li>
+          <li><strong>Crecimiento y futuro:</strong> El islam es la religión de más rápido crecimiento en el mundo. Proyecciones del Pew Research Center indican que para el 2075 igualará en número al cristianismo, impulsado por altas tasas de natalidad y conversiones en África y Asia.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Islamismo</span>
+          <span class="tag">Geopolítica</span>
+          <span class="tag">Secularismo</span>
+          <span class="tag">Demografía religiosa</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /cards-grid -->
+
+  <div class="divider" style="margin-top:50px">
+    <div class="divider-line"></div>
+    <div class="divider-gem"></div>
+    <div class="divider-line"></div>
+  </div>
+
+</main>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <p>Elaborado por <strong>Luis Felipe Fuentes</strong> · Materia de <strong>Cultura Teológica</strong></p>
+  <p style="margin-top:8px; font-size:0.65rem; opacity:0.5;">☽ El Islam — Religión, Historia y Cultura ☽</p>
+</footer>
+
+<script>
+  function toggleCard(id) {
+    const card = document.getElementById(id);
+    const isOpen = card.classList.contains('open');
+
+    // Close all cards
+    document.querySelectorAll('.card').forEach(c => {
+      c.classList.remove('open');
+      const btn = c.querySelector('.toggle-btn');
+      if (btn) btn.childNodes[btn.childNodes.length - 1].textContent = ' Ver contenido';
+    });
+
+    // Open clicked card if it was closed
+    if (!isOpen) {
+      card.classList.add('open');
+      const btn = card.querySelector('.toggle-btn');
+      if (btn) btn.childNodes[btn.childNodes.length - 1].textContent = ' Ocultar';
+    }
+  }
+
+  // Auto-open first card on load
+  setTimeout(() => toggleCard('card-1'), 600);
+</script>
+</body>
+</html>
